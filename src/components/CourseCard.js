@@ -10,7 +10,7 @@ const CourseCard = ({course}) => {
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
                 <p>{
-                    details.length > 200 ? <p> {details.slice (0, 200) + '...'}<Link>Read More</Link></p> : 
+                    details.length > 200 ? <p> {details.slice (0, 200) + '...'}<Link to={`/course/${_id}`}>Read More</Link></p> : 
                     <p>{details}</p>
                     }</p>
                 <div className="card-actions justify-end">

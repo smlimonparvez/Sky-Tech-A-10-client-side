@@ -16,7 +16,7 @@ const Courses = () => {
             <div className='col-span-1'>
                 <h3 className='font-medium text-xl mb-3'>All Courses</h3>
                 {
-                  categories.map(category => <p className='mb-3' key={category.id}><Link to={`/category/${category.id}`} className='hover:text-blue-500 hover:underline'>{category.name}</Link></p>)
+                  categories.map(category => <p className='mb-3' key={category.id}><Link to={`/${category.name}/${category.id}`} className='hover:text-blue-500 hover:underline'>{category.name}</Link></p>)
                 }
             </div>
             <div className='col-span-3'>

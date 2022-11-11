@@ -23,7 +23,7 @@ const Registration = () => {
                             </label>
                             <input type="text" placeholder="password" className="input input-bordered" />
                             <label className="label">
-                                <Link to="/login" className="label-text-alt link link-hover">I have an account</Link>
+                                <Link to="/login" className="label-text-alt link link-hover hover:text-blue-400">I have an account</Link>
                             </label>
                         </div>
                         <div className="form-control mt-6">

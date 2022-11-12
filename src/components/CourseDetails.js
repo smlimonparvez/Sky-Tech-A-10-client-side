@@ -12,8 +12,13 @@ const CourseDetails = () => {
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
                 <p className='text-justify'>{details}</p>
-                <div className="card-actions justify-end">
-                    <button className="btn btn-primary"><Link to={`/course/${_id}/checkout`} className="flex">Get Access<FaArrowCircleRight className='ml-2'/> </Link></button>
+                <div className='flex justify-between align-middle'>
+                    <div className="card-actions justify-end">
+                        <button className="btn btn-primary"><Link to={`/course/${_id}/checkout`} className="flex">Get Access<FaArrowCircleRight className='ml-2' /> </Link></button>
+                    </div>
+                    <div className="card-actions justify-start">
+                        <button className="btn btn-primary"><Link to={`/course/${_id}/checkout`} className="flex">Download PDF<FaArrowCircleRight className='ml-2' /> </Link></button>
+                    </div>
                 </div>
             </div>
         </div>

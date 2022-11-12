@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider/AuthProvider';
+import { SiBookstack } from 'react-icons/si';
 
 const Navbar = () => {
 
@@ -26,7 +27,7 @@ const Navbar = () => {
                         <li><Link>Blog</Link></li>
                     </ul>
                 </div>
-                <Link to='/home' className="btn btn-ghost normal-case text-xl">SKYTECH</Link>
+                <Link to='/home' className="btn btn-ghost normal-case text-xl"><SiBookstack className='mr-2'/>SKY TECH</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">

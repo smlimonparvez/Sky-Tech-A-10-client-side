@@ -56,12 +56,14 @@ const Registration = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name='password' placeholder="Password" className="input input-bordered" />
-                            <label className="label">
-                                <Link to="/login" className="label-text-alt link link-hover text-blue-700">I have an account</Link>
-                            </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary btn-outline">signup</button>
+                            <button className="btn btn-primary btn-outline mb-4">signup</button>
+                        </div>
+                        <hr />
+                        <div className=' text-center p-2'>
+                            <p className='font-semibold'>Already have an account?</p>
+                            <Link to='/login' className='hover:text-blue-800 text-blue-600 underline'>sign in</Link>
                         </div>
                     </form>
                 </div>

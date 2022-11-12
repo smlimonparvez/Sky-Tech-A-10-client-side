@@ -1,13 +1,13 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider/AuthProvider';
 import { FcGoogle } from 'react-icons/fc';
 import { BsGithub } from 'react-icons/bs';
 
 const LogIn = () => {
-    const { providerLogin } = useContext(AuthContext);
+    const { providerLogin, githubLogIn, signIn } = useContext(AuthContext);
 
     const googleProvider = new GoogleAuthProvider();
     const googleSignIn = () => {
@@ -20,29 +20,31 @@ const LogIn = () => {
     }
 
     const githubProvider = new GithubAuthProvider();
-    // const githubSignIn = () => {
-    //     githubLogIn(githubProvider)
-    //     .then(result => {
-    //         const user = result.user;
-    //         console.log(user);
-    //     })
-    //     .catch(error => console.error(error))
-    // }
+    const githubSignIn = () => {
+        githubLogIn(githubProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => console.error(error))
+    }
 
-    const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location =useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
+
         signIn(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
-                navigate('/')
+                navigate(from, {replace: true});
             })
             .catch(error => console.error(error))
     }
@@ -67,15 +69,17 @@ const LogIn = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered" />
-                            <label className="label">
-                                <Link to="/registration" className="label-text-alt link link-hover text-blue-700">I don't have an account</Link>
-                            </label>
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary btn-outline">Login</button>
-                            <div className='flex justify-center my-3'><hr className='w-2/4 mx-auto m-5'/><span>or</span><hr className='w-2/4 mx-auto m-5'/></div>
+                            <div className='flex justify-center my-3'><hr className='w-2/4 mx-auto m-5'/> <span> or </span> <hr className='w-2/4 mx-auto m-5'/></div>
                             <button onClick={googleSignIn} className="btn btn-primary btn-outline mb-4"><FcGoogle className='mr-4 text-lg'/>Google Login</button>
-                            <button className="btn btn-primary btn-outline mb-4"><BsGithub className='mr-4 text-lg'/>Github Login</button>
+                            <button onClick={githubSignIn} className="btn btn-primary btn-outline mb-4"><BsGithub className='mr-4 text-lg'/>Github Login</button>
+                        </div>
+                        <hr />
+                        <div className=' text-center p-2'>
+                            <p className='font-semibold'>Don't have an account?</p>
+                            <Link to='/registration' className='hover:text-blue-800 text-blue-600 underline'>sign up</Link>
                         </div>
                     </form>
                 </div>

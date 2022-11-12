@@ -35,9 +35,9 @@ const Registration = () => {
                     <form className="card-body">
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Name</span>
+                                <span className="label-text">Full Name</span>
                             </label>
-                            <input type="text" name='name' placeholder="Name" className="input input-bordered" />
+                            <input type="text" name='name' placeholder="Full Name" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -58,7 +58,7 @@ const Registration = () => {
                             <input type="password" name='password' placeholder="Password" className="input input-bordered" />
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary btn-outline mb-4">signup</button>
+                            <button className="btn btn-primary btn-outline mb-4"><Link to='/'>signup</Link></button>
                         </div>
                         <hr />
                         <div className=' text-center p-2'>

@@ -35,5 +35,13 @@ export const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
             }
         ]
+    },
+
+    {
+        path: '*',
+        element: <div className=' text-center mt-52'>
+            <span className='font-bold text-9xl text-red-600 mb-2'>404</span>
+            <p className='font-semibold text-xl'>page not found</p>
+        </div>
     }
 ])

@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA5ljlHw2IMy6GsEdc3zhzTSjc-UG7lQ_0",
-  authDomain: "skytech-auth.firebaseapp.com",
-  projectId: "skytech-auth",
-  storageBucket: "skytech-auth.appspot.com",
-  messagingSenderId: "796451664637",
-  appId: "1:796451664637:web:1bffed8678c6ab3bf90494"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase

@@ -17,22 +17,22 @@ export const router = createBrowserRouter([
             {
                 path: '/courses',
                 element: <Courses></Courses>,
-                loader: () => fetch('http://localhost:5000/courses')
+                loader: () => fetch('https://assignment-10-server-iota-five.vercel.app/courses')
             },
             { path: '/blog', element: <Blog></Blog> },
             { path: '/login', element: <LogIn></LogIn> },
             { path: '/registration', element: <Registration></Registration> },
             {
                 path: '/category/:id', element: <Courses></Courses>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-10-server-iota-five.vercel.app/category/${params.id}`)
             },
             {
                 path: '/course/:id', element: <CourseDetails></CourseDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-10-server-iota-five.vercel.app/course/${params.id}`)
             },
             {
                 path: '/course/:id/checkout', element: <PrivateRoutes><CheckOut></CheckOut></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-10-server-iota-five.vercel.app/course/${params.id}`)
             }
         ]
     },

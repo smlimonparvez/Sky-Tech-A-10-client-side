@@ -1,7 +1,23 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider/AuthProvider';
 
 const LogIn = () => {
+    const {providerLogin} = useContext(AuthContext);
+
+    const googleProvider = new GoogleAuthProvider();
+    const googleSignIn =()=> {
+        providerLogin(googleProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => console.error(error))
+    }
+
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -28,6 +44,7 @@ const LogIn = () => {
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
+                            <button onClick={googleSignIn} className="btn btn-primary">Google Login</button>
                         </div>
                     </div>
                 </div>

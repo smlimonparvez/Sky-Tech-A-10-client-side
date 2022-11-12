@@ -38,26 +38,19 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 <div className="tooltip tooltip-bottom mr-5" data-tip={user?.displayName}>
-                    <img src={
-                        user?.photoURL ?
-                            <img style={{ borderRadius: '50%', }} src={user?.photoUrl} />
-                            : <p>kk</p>
-                    } />
-                   
+                    <img src= {user?.photoURL ? <img style={{ borderRadius: '50%', }} src={user?.photoUrl} /> : <p>{user?.displayName}</p>} />
                 </div>
-                
+
                 {
-                                user?.uid ?
-                                    <>
-                                        
-                                        <button className="btn btn-outline" onClick={handleLogOut}>Log out</button>
-                                    </>
-                                    :
-                                    <>
-                                        <Link className="btn btn-outline" to='/login'>Log In</Link>
-                                       
-                                    </>
-                            }
+                    user?.uid ?
+                        <>
+                            <button className="btn btn-outline" onClick={handleLogOut}>Log out</button>
+                        </>
+                        :
+                        <>
+                            <Link className="btn btn-outline" to='/login'>Log In</Link>
+                        </>
+                }
             </div>
         </div>
     );

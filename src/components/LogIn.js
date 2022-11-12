@@ -1,7 +1,7 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider/AuthProvider';
 
 const LogIn = () => {
@@ -16,10 +16,27 @@ const LogIn = () => {
         })
         .catch(error => console.error(error))
     }
+       
+    const {signIn} = useContext(AuthContext);
+    const navigate = useNavigate();
 
+    const handleSubmit = event =>{
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        signIn(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            form.reset();
+            navigate('/')
+        })
+        .catch(error => console.error(error))
+    }
 
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <div onSubmit={handleSubmit} className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">Login now!</h1>

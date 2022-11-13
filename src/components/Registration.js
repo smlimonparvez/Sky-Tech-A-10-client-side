@@ -1,10 +1,14 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider/AuthProvider';
 
 const Registration = () => {
 
     const { createUser } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location =useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -20,6 +24,7 @@ const Registration = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
+                navigate(from, {replace: true});
             })
             .catch(e => console.error(e));
     }
@@ -37,13 +42,13 @@ const Registration = () => {
                             <label className="label">
                                 <span className="label-text">Full Name</span>
                             </label>
-                            <input type="text" name='name' placeholder="Full Name" className="input input-bordered" />
+                            <input type="text" name='name' placeholder="Full Name" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name='email' placeholder="Email" className="input input-bordered" />
+                            <input type="email" name='email' placeholder="Email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -55,10 +60,10 @@ const Registration = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name='password' placeholder="Password" className="input input-bordered" />
+                            <input type="password" name='password' placeholder="Password" className="input input-bordered" required />
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary btn-outline mb-4"><Link to='/'>signup</Link></button>
+                            <button className="btn btn-primary btn-outline mb-4"><Link>signup</Link></button>
                         </div>
                         <hr />
                         <div className=' text-center p-2'>
